@@ -129,33 +129,33 @@ collections_config:
     disable_add_folder: false
     disable_file_actions: false
     schemas:
-  documents:
-    path: _documents
-    output: false
-    url:
-    filter:
-    parse_branch_index:
-    name:
-    description: ''
-    icon: notes
-    documentation:
-    preview:
-    sort:
-    sort_options:
-    singular_name:
-    singular_key: document
-    _editables:
-    _inputs:
-    _select_data:
-    _structures:
-    add_options:
-    create:
-    disable_add: false
-    disable_add_folder: false
-    disable_file_actions: false
-    new_preview_url:
-    schemas:
-    schema_key:
+  # documents:
+  #   path: _documents
+  #   output: false
+  #   url:
+  #   filter:
+  #   parse_branch_index:
+  #   name:
+  #   description: ''
+  #   icon: notes
+  #   documentation:
+  #   preview:
+  #   sort:
+  #   sort_options:
+  #   singular_name:
+  #   singular_key: document
+  #   _editables:
+  #   _inputs:
+  #   _select_data:
+  #   _structures:
+  #   add_options:
+  #   create:
+  #   disable_add: false
+  #   disable_add_folder: false
+  #   disable_file_actions: false
+  #   new_preview_url:
+  #   schemas:
+  #   schema_key:
 collection_groups:
   - heading: Pages
     collections:
@@ -757,4 +757,4 @@ _structures:
             comment: Enter the number of posts
             cascade: true
 data_config: {}
-timezone: Pacific/Auckland
+timezone: America/Chicago
