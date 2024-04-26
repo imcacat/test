@@ -7,3 +7,6 @@ node_modules
 bookshop-live.js
 bookshop-hosted.js
 bookshop.css
+Gemfile.lock
+package-lock.json
+yarn.lock
