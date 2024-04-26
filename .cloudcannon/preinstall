@@ -4,9 +4,11 @@
 set -e
 
 echo "Running pre-install script..."
+echo "Current directory: $(pwd)"
+echo "Listing directory contents:"
+ls -l
 
 # cd /path/to/your/jekyll/project  # Update this to the correct path
-echo $( pwd )
 
 # Check required environment variables
 if [ -z "$JEKYLL_ENV" ]; then
@@ -20,33 +22,10 @@ fi
 if [ -f Gemfile ]; then
   echo "Gemfile found, installing dependencies..."
   bundle config set --local path 'vendor/bundle'
+  bundle install
 else
   echo "No Gemfile found, skipping bundle install"
 fi
 
 # Custom environment setup can go here
 # For example, setting up Node.js or Python environments
-
-echo "Pre-install script completed successfully."
-
-
-
-echo "Running pre-install script..."
-echo "Current directory: $(pwd)"
-echo "Listing directory contents:"
-ls -l
-
-# Check for the presence of a Gemfile to install Ruby dependencies.
-if [ -f Gemfile ]; then
-  echo "Gemfile found, installing dependencies..."
-  # Install dependencies locally in the vendor/bundle directory.
-  bundle install --path vendor/bundle
-else
-  echo "No Gemfile found in the expected directory. Please verify the path and presence of Gemfile."
-  exit 1
-fi
-
-find . -type f -name Gemfile
-
-echo "Dependencies installed successfully."
-echo "Pre-install script completed successfully."
