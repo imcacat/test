@@ -24,4 +24,18 @@ else
   exit 1
 fi
 
+
+
+echo "Running post-install script...2"
+echo "Current directory: $(pwd)"
+echo "Listing directory contents:"
+ls -l
+
+# Post-installation checks or setups can be done here.
+# Example: Verify certain files or services are ready before the build.
+echo "Verify specific configurations or files as needed..."
+
+echo "Post-install script completed successfully."
+
+
 echo "Post-install script completed successfully."

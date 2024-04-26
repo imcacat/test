@@ -1,0 +1,760 @@
+source: site
+paths:
+  uploads: uploads
+  uploads_use_relative_path: false
+  static: ''
+  dam_uploads: ''
+  dam_static: ''
+  collections: ''
+  data: _data
+  layouts: _layouts
+  includes: _includes
+collections_config:
+  pages:
+    path: ''
+    output: true
+    filter: strict
+    icon: notes
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default:
+        path: schemas/page.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+  portfolio_pages:
+    path: _portfolio-pages
+    output: false
+    name: Portfolio Pages
+    icon: more
+    singular_name: Portfolio Page
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default:
+        path: schemas/portfolio-page.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+  staff_members:
+    path: _staff_members
+    output: true
+    name: Staff Members
+    icon: groups
+    sort:
+      key: title
+    sort_options:
+      - key: title
+      - key: title
+        order: desc
+      - key: designation
+      - key: designation
+        order: desc
+    singular_name: Team
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default:
+        path: schemas/staff_members.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+  posts:
+    path: _posts
+    output: true
+    name: Posts
+    description: ''
+    icon: description
+    singular_name: Post
+    _editables:
+    _inputs:
+    _select_data:
+    _structures:
+    create:
+      path: >-
+        [relative_base_path]/{date|year}-{date|month}-{date|day}-{title|slugify}.[ext]
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default:
+        path: schemas/post.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+  portfolio:
+    path: _portfolio
+    output: true
+    name: Portfolio
+    description: ''
+    icon: work_outline
+    singular_name: Portfolio
+    _editables:
+    _inputs:
+    _select_data:
+    _structures:
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+      default:
+        path: schemas/portfolio.md
+        reorder_inputs: true
+        hide_extra_inputs: false
+        remove_empty_inputs: false
+        remove_extra_inputs: true
+        icon: notes
+  data:
+    path: _data
+    output: false
+    description: ''
+    icon: notes
+    _editables:
+    _inputs:
+    _select_data:
+    _structures:
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    schemas:
+  # documents:
+  #   path: _documents
+  #   output: false
+  #   url:
+  #   filter:
+  #   parse_branch_index:
+  #   name:
+  #   description: ''
+  #   icon: notes
+  #   documentation:
+  #   preview:
+  #   sort:
+  #   sort_options:
+  #   singular_name:
+  #   singular_key: document
+  #   _editables:
+  #   _inputs:
+  #   _select_data:
+  #   _structures:
+  #   add_options:
+  #   create:
+  #   disable_add: false
+  #   disable_add_folder: false
+  #   disable_file_actions: false
+  #   new_preview_url:
+  #   schemas:
+  #   schema_key:
+collection_groups:
+  - heading: Pages
+    collections:
+      - pages
+      - portfolio
+      - portfolio_pages
+      - staff_members
+  - heading: Blog
+    collections:
+      - posts
+      - drafts
+  - heading: Settings
+    collections:
+      - data
+_inputs:
+  date:
+    type: auto
+    instance_value: NOW
+    cascade: true
+  datetime:
+    type: auto
+    instance_value: NOW
+    cascade: true
+  post_settings.layout:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.post_layouts
+    cascade: true
+  portfolio_settings.layout:
+    type: select
+    options:
+      allow_empty: true
+      values: _select_data.post_layouts
+    cascade: true
+  url:
+    type: auto
+    comment: Enter the page url
+    cascade: true
+  logo_image:
+    type: auto
+    comment: Use logo icon here
+    cascade: true
+  logo_width:
+    type: auto
+    comment: Enter logo width (default 150px)
+    cascade: true
+  favicon_image:
+    type: auto
+    comment: Use favicon here
+    cascade: true
+  login_url:
+    type: auto
+    comment: Enter login link in menu
+    cascade: true
+  signup_url:
+    type: auto
+    comment: Enter signup link in menu
+    cascade: true
+  columns_for_laptop:
+    type: auto
+    comment: Default value is 3
+    cascade: true
+  columns_for_tablet:
+    type: auto
+    comment: Default value is 2
+    cascade: true
+  columns_for_mobile:
+    type: auto
+    comment: Default value is 1
+    cascade: true
+  site_title:
+    type: auto
+    comment: Enter the website title
+    cascade: true
+  description:
+    type: auto
+    comment: Enter the site description
+    cascade: true
+  permalink:
+    type: auto
+    comment: Page URL in slug format
+    cascade: true
+  website_url:
+    type: auto
+    comment: Enter live website domain
+    cascade: true
+  font-style_url:
+    type: auto
+    comment: Enter a google font url.
+    cascade: true
+  categories:
+    type: multiselect
+    options:
+      allow_create: true
+      empty_type: array
+    cascade: true
+  tags:
+    type: multiselect
+    options:
+      allow_create: true
+      empty_type: array
+    cascade: true
+_select_data:
+  columns_for_laptops:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 6
+  columns_for_tablets:
+    - 1
+    - 2
+    - 3
+    - 4
+  columns_for_mobiles:
+    - 1
+    - 2
+  hero_layouts:
+    - Image Left
+    - Image Right
+  caption_alignments:
+    - Left
+    - Center
+    - Right
+  counter_alignments:
+    - Left
+    - Center
+    - Right
+  content_alignments:
+    - Left
+    - Center
+    - Right
+  component_widths:
+    - Normal
+    - Wide
+  vertical_alignments:
+    - Top
+    - Center
+    - Bottom
+  mobile_image_orders:
+    - Top
+    - Bottom
+  image_types:
+    - contained
+    - stretched
+  portfolio_layouts:
+    - left-sidebar
+    - right-sidebar
+    - full-width
+  post_layouts:
+    - left-sidebar
+    - right-sidebar
+    - full-width
+  post_categories:
+    - Marketing
+    - Business
+    - Designs
+    - Relations
+    - Career Advice
+_structures:
+  content_blocks:
+    style: modal
+    id_key: _bookshop_name
+    values:
+      - value:
+          _bookshop_name: call-to-action
+          heading: ''
+          lower_text_html: ''
+          button_label: ''
+          button_url: ''
+        label: Call to action
+        description: Call to action block with a button
+        icon: call_to_action
+        tags:
+          - Text
+        _inputs:
+      - value:
+          _bookshop_name: contact
+          address: ''
+          email: ''
+          phone: ''
+          map-iframe: ''
+          layout: map_right
+        label: Contact
+        description: Contact form, address, email, number and map iframe
+        icon: location_on
+        tags:
+          - Form
+        _inputs:
+          address:
+            type: auto
+            comment: Enter the contact address
+            cascade: true
+          email:
+            type: auto
+            comment: Enter the contact Email address
+            cascade: true
+          phone:
+            type: auto
+            comment: Enter the contact phone number
+            cascade: true
+          map-iframe:
+            type: auto
+            comment: Enter the google iframe src
+            cascade: true
+          layout:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - map_left
+                - map_right
+            comment: Select the contact layout for the map.
+            cascade: true
+      - value:
+          _bookshop_name: feature-blog-hero-content
+          hero_layout: Image Right
+          component_width: normal
+          mobile_image_order: Bottom
+          vertical_alignment: Top
+          display_image: true
+          display_title: true
+          display_description: true
+        label: Feature Blog Hero Content
+        description: >-
+          These module's content comes from the blog, Image on one side and
+          content on the other with a call to action button
+        icon: menu_book
+        tags:
+          - Data
+        _inputs:
+          layout:
+            type: auto
+            comment: Select the layout for the image
+            cascade: true
+          component_width:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - fullwidth
+                - normal
+            comment: Select the type for the feature blog
+            cascade: true
+          mobile_image_order:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - bottom
+                - top
+            comment: Select the image order mobile
+            cascade: true
+          vertical_alignment:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - top
+                - center
+                - bottom
+            comment: Select the vertical alignment for feature blog
+            cascade: true
+      - value:
+          _bookshop_name: hero-content-section
+          hero_layout: image_right
+          component_width: normal
+          mobile_image_order: Bottom
+          vertical_alignment: Top
+          image_type: contained
+          image: ''
+          image_alt: Hero image
+          caption_title: ''
+          hero_title: ''
+          description_html: ''
+          cta_button_label: ''
+          cta_button_url: ''
+          secondary_button_label: ''
+          secondary_button_url: ''
+        label: Hero content
+        description: >-
+          Image on one side and content on the other with a call to action
+          button
+        icon: chrome_reader_mode
+        tags:
+          - Text
+        _inputs:
+          hero_layout:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - image_left
+                - image_right
+            comment: >-
+              Select the layout for the image. Note this will only work for hero
+              image type contained option
+            cascade: true
+          component_width:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - fullwidth
+                - normal
+            comment: Select the type for the hero content section
+            cascade: true
+          mobile_image_order:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - bottom
+                - top
+            comment: Select the image order for mobile
+            cascade: true
+          vertical_alignment:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - top
+                - center
+                - bottom
+            comment: Select the vertical alignment for hero content
+            cascade: true
+          image_type:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - contained
+                - stretched
+            comment: Select the image type for hero
+            cascade: true
+          image:
+            type: auto
+            comment: Select hero image
+            cascade: true
+          image_alt:
+            type: auto
+            comment: Provide the alternative text for the image
+            cascade: true
+      - value:
+          _bookshop_name: icon-section
+          caption_title: ''
+          main_title: ''
+          icon_layout: right
+          items: []
+        label: Icon section
+        description: Title on one side and content on the other with icons attached to it
+        icon: ballot
+        tags:
+          - Text
+        _inputs:
+          icon_layout:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - left
+                - right
+            cascade: true
+          icon_image_alt:
+            type: auto
+            comment: Provide the alternative text for the image
+            cascade: true
+          items:
+            type: array
+            options:
+              structures:
+                style: select
+                values:
+                  - label: Item
+                    icon: add_box
+                    value:
+                      icon_image: ''
+                      icon_image_alt: Icon image
+                      title: ''
+                      description_html: ''
+                      button_label: ''
+                      button_url: ''
+                    _inputs:
+            cascade: true
+      - value:
+          _bookshop_name: info-section
+          caption_title: ''
+          main_title: ''
+          description_html: ''
+          columns_to_display: '2'
+          items: []
+        label: Info section
+        description: >-
+          Title and caption title above with icon, description and a call to
+          action below
+        icon: view_stream
+        tags:
+          - Text
+        _inputs:
+          columns_to_display:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - '2'
+                - '3'
+                - '4'
+            comment: Select the number of column for info section
+            cascade: true
+          alignment:
+            type: auto
+            comment: Select the alignment for info section
+            cascade: true
+          image:
+            type: auto
+            comment: Select the info image
+            cascade: true
+          image_alt:
+            type: auto
+            comment: Provide the alternative text for the image
+            cascade: true
+          items:
+            type: array
+            options:
+              structures:
+                style: select
+                values:
+                  - label: Item
+                    icon: add_box
+                    value:
+                      conent_alignment: Left
+                      image: ''
+                      image_alt: Icon image
+                      title: ''
+                      description_html: ''
+                      button_label: ''
+                      button_url: ''
+                    _inputs:
+            cascade: true
+      - value:
+          _bookshop_name: latest-blog
+          title: ''
+          show_post_tags: true
+          show_post_date: true
+        label: Latest Blog
+        description: List of Latest Blog items
+        icon: fiber_new
+        tags:
+          - Data
+        _inputs:
+      - value:
+          _bookshop_name: number-counter
+          caption_alignment: left
+          caption_title: ''
+          main_title: ''
+          description_html: ''
+          columns_to_display: '2'
+          items: []
+        label: Number Counter
+        description: Animated Number Counter from Zero
+        icon: plus_one
+        tags:
+          - Text
+        _inputs:
+          alignment:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - Left
+                - Center
+                - Right
+            cascade: true
+          columns_to_display:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - '2'
+                - '3'
+                - '4'
+            cascade: true
+          items:
+            type: array
+            options:
+              structures:
+                style: select
+                values:
+                  - label: Item
+                    icon: add_box
+                    value:
+                      counter_alignment: Left
+                      counter_number: 0
+                      counter_symbol: ''
+                      title: ''
+                      description_html: ''
+                    _inputs:
+            cascade: true
+      - value:
+          _bookshop_name: spacer-section
+          space: 30
+        label: Spacer section
+        description: This section is used to add the specified space
+        icon: expand
+        tags:
+          - Text
+        _inputs:
+          space:
+            type: number
+            comment: Pixel value for the spacer section e.g. 30px
+            cascade: true
+      - value:
+          _bookshop_name: team-list
+          alignment: left
+          caption_title: ''
+          main_title: ''
+          description_html: ''
+          columns_to_display: '2'
+          people_to_display_number: 6
+          show_button: true
+        label: Team List
+        description: List of team-list collection items
+        icon: groups
+        tags:
+          - Data
+        _inputs:
+          alignment:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - left
+                - center
+                - right
+            comment: Select the alignment for team list
+            cascade: true
+          columns_to_display:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - '2'
+                - '3'
+                - '4'
+            cascade: true
+      - value:
+          _bookshop_name: testimonial
+          layout: image_left
+          caption_title: ''
+          main_title: ''
+          image: ''
+          image_alt: Testimonial image
+          content_heading: ''
+          content_html: ''
+          author_name: ''
+          author_designation: ''
+        label: Testimonial
+        description: Image with some quotes or review
+        icon: format_quote
+        tags:
+          - Text
+        _inputs:
+          layout:
+            type: select
+            options:
+              allow_empty: true
+              values:
+                - image_left
+                - image_right
+            comment: Select the layout for the image.
+            cascade: true
+          image:
+            type: auto
+            comment: Select testimonial image
+            cascade: true
+          image_alt:
+            type: auto
+            comment: Provide the alternative text for the image
+            cascade: true
+      - value:
+          _bookshop_name: trending-blog
+          title: ''
+          posts_to_show_number: ''
+          show_post_tags: true
+          show_post_date: true
+        label: Trending Blog
+        description: List of Trending Blog items
+        icon: trending_up
+        tags:
+          - Data
+        _inputs:
+          title:
+            type: auto
+            comment: Enter trending blog title
+            cascade: true
+          posts_to_show_number:
+            type: auto
+            comment: Enter the number of posts
+            cascade: true
+data_config: {}
+timezone: America/Chicago
