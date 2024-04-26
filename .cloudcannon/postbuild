@@ -1,4 +1,60 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-npm i
-npx @bookshop/generate
+# Stop on first error
+set -e
+
+echo "Running post-build script..."
+
+# Optimization: Minify HTML, CSS, and JavaScript
+# This requires having the necessary tools installed in your environment
+# Example: Using `html-minifier`, `uglify-js`, and `clean-css-cli`
+
+if command -v html-minifier >/dev/null 2>&1; then
+  echo "Minifying HTML files..."
+  find _site -name '*.html' -exec html-minifier --collapse-whitespace --remove-comments --minify-css true --minify-js true -o {} {} \;
+else
+  echo "html-minifier not installed, skipping HTML minification."
+fi
+
+# Example: Generate a sitemap after the site is built
+if [ -f "_site/sitemap.xml" ]; then
+  echo "Sitemap exists, skipping generation."
+else
+  echo "Generating sitemap..."
+  echo '<?xml version="1.0" encoding="UTF-8"?>' > _site/sitemap.xml
+  echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> _site/sitemap.xml
+  find _site -type f -name '*.html' | sed 's/_site\/\(.*\)/<url><loc>https:\/\/example.com\/\1<\/loc><\/url>/' >> _site/sitemap.xml
+  echo '</urlset>' >> _site/sitemap.xml
+fi
+
+# Check for critical files
+if [ -f "_site/index.html" ]; then
+  echo "Main site file exists, build appears successful."
+else
+  echo "Critical error: Main site file missing after build."
+  exit 1
+fi
+
+# Example: Notify a webhook about the build completion
+# Replace URL with your actual payload receiver
+if command -v curl >/dev/null 2>&1; then
+  curl -X POST -H 'Content-type: application/json' --data '{"text":"Build completed successfully!"}' http://example.com/webhook
+else
+  echo "curl not installed, skipping notification."
+fi
+
+echo "Post-build script completed successfully."
+
+
+
+## Original Below
+
+
+
+
+
+
+# #!/usr/bin/env bash
+
+# npm i
+# npx @bookshop/generate

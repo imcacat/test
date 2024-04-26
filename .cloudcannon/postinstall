@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Stop on first error
+set -e
+
+echo "Running post-install script..."
+
+# Example: Clean up any temporary files created during the build
+if [ -d "tmp_build_files" ]; then
+  echo "Cleaning up temporary build files..."
+  rm -rf tmp_build_files
+fi
+
+# Send notification to a Slack channel or an email that the build is completed
+# Note: Implement actual sending logic with curl or another tool
+echo "Build completed for $JEKYLL_ENV environment."
+
+# Post-build tests or checks can go here
+# For example, checking if certain output files are generated
+if [ -f "_site/index.html" ]; then
+  echo "Main site file exists, build looks good."
+else
+  echo "Main site file does not exist, check build logs."
+  exit 1
+fi
+
+echo "Post-install script completed successfully."

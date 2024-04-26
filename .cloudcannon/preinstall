@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Stop on first error
+set -e
+
+echo "Running pre-install script..."
+
+# Check required environment variables
+if [ -z "$JEKYLL_ENV" ]; then
+  export JEKYLL_ENV=production
+  echo "Set default JEKYLL_ENV to production"
+else
+  echo "Using JEKYLL_ENV: $JEKYLL_ENV"
+fi
+
+# Check for Gemfile and install dependencies
+if [ -f Gemfile ]; then
+  echo "Gemfile found, installing dependencies..."
+  bundle install --path vendor/bundle
+else
+  echo "No Gemfile found, skipping bundle install"
+fi
+
+# Custom environment setup can go here
+# For example, setting up Node.js or Python environments
+
+echo "Pre-install script completed successfully."
