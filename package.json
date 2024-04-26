@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/imcacat/docs.imca-cat.org.git",
+    "url": "git+https://github.com/imcacat/docs.imca-cat.org.git"
   },
   "author": "CloudCannon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/imcacat/docs.imca-cat.org/issues",
+    "url": "https://github.com/imcacat/docs.imca-cat.org/issues"
   },
   "homepage": "https://github.com/imcacat/docs.imca-cat.org#readme",
   "devDependencies": {
